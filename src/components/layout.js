@@ -1,46 +1,37 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
-import React from "react"
+import React, { useState, useEffect, useLayoutEffect } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
-import Header from "./header"
-import "./layout.css"
+import "../pages/styles/index.scss"
+import Header from "./header/header.component.js"
+import SEO from "./seo"
+import GithubLogoComponent from "./github-logo/github-logo.component"
+import "./layout.scss"
+import LinkedInComponent from "./linked-in/linked-in.component"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+  const [contactStyles, setContactStyles] = useState("")
+  const currentUrl = typeof window !== "undefined" ? window.location.href : ""
+  const res = currentUrl.split("/")
 
+  useLayoutEffect(() => {
+    if (res[3] === "" || res[3] === "contactme" || res[4]) {
+      setContactStyles("container__contact--primary-color")
+    }
+  }, [])
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </>
+    <div id="App">
+      <Header />
+      <SEO />
+      <main className="container">
+        <div className={`container__contact ${contactStyles}`}>
+          <div style={{ margin: "0 0 8rem 1.5rem" }}>
+            <LinkedInComponent />
+            <GithubLogoComponent />
+          </div>
+        </div>
+        {children}
+      </main>
+    </div>
   )
 }
 

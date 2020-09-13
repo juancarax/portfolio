@@ -1,0 +1,10 @@
+.github-logo {
+  width: 2.6rem;
+  height: 2.6rem;
+  cursor: pointer;
+  fill: var(--medium-gray-text);
+
+  &:hover {
+    fill: #609fed;
+  }
+}

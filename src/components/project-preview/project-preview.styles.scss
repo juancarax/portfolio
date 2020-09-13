@@ -1,0 +1,37 @@
+.project {
+  height: 20rem;
+  width: 27rem;
+  color: #fff;
+  position: relative;
+
+  &__image {
+    transform: scale(1);
+    transition: all 0.4s;
+  }
+
+  figcaption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    color: #609fed;
+    text-align: center;
+    padding: 1.5rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: 1px solid #609fed;
+    opacity: 0;
+    transition: all 0.4s;
+    backface-visibility: hidden;
+  }
+
+  &:hover figcaption {
+    opacity: 1;
+    transform: translate(-50%, -60%);
+  }
+
+  &:hover &__image {
+    transform: scale(1.05);
+    filter: blur(2px) brightness(95%);
+  }
+}

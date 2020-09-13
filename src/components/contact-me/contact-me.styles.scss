@@ -1,0 +1,116 @@
+@mixin shrinkLabel {
+  top: -16px;
+  font-size: 1.2rem;
+  color: #212121;
+}
+
+.contactme {
+  grid-column: full-start / full-end;
+  display: flex;
+  min-height: 87.5vh;
+  align-items: center;
+  @media only screen and (max-width: 800px) {
+    flex-direction: column;
+  }
+  background-color: rgba(234, 233, 253, 0.404);
+  &__illustration {
+    width: 40rem;
+    height: 40rem;
+    margin-right: 5rem;
+
+    @media only screen and (max-width: 800px) {
+      display: none;
+      margin-right: 1rem;
+      order: 2;
+    }
+  }
+}
+
+.form {
+  margin-top: 3rem;
+  grid-column: 5 / 7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch;
+  @media only screen and (max-width: 800px) {
+    grid-column: 1 / -1;
+  }
+
+  &__input {
+    font-size: 1.8rem;
+    padding: 1.2rem 2rem;
+    font-family: inherit;
+    @media only screen and (max-width: 800px) {
+      grid-column: 1 / -1;
+    }
+    &--message {
+      height: 4rem;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba(grey, 0.05);
+    }
+
+    &:focus ~ .form__label {
+      @include shrinkLabel();
+    }
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    &:not(:last-child) {
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  &__label {
+    font-family: inherit;
+    font-size: 1.4rem;
+    margin-bottom: 0.7rem;
+    display: block;
+    position: absolute;
+    pointer-events: none;
+    left: 1.2rem;
+    top: 1.6rem;
+    transition: 300ms ease all;
+
+    &--shrink {
+      @include shrinkLabel();
+    }
+  }
+
+  &__message {
+    padding: 2rem 2.5rem;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    color: #6760ed;
+    margin-bottom: 3rem;
+  }
+
+  &__button {
+    align-self: stretch;
+    padding: 1.5rem 2.5rem;
+    font-family: inherit;
+    font-weight: 500;
+    text-transform: uppercase;
+    display: inline-block;
+    border: none;
+    font-size: 1.4rem;
+    transition: all 0.2;
+    background-color: #6760ed;
+    color: white;
+    &:hover {
+      background-color: #4e3fe6;
+    }
+    @media only screen and (max-width: 800px) {
+      align-self: center;
+    }
+  }
+}

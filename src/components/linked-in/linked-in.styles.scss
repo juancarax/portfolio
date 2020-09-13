@@ -1,0 +1,10 @@
+.linkedin {
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  fill: var(--medium-gray-text);
+  margin-bottom: 0.6rem;
+  &:hover {
+    fill: #609fed;
+  }
+}

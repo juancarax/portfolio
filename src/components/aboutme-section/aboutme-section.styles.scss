@@ -1,0 +1,25 @@
+.aboutme {
+  display: flex;
+  grid-column: col-start 2 / col-end 5;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+
+  justify-content: center;
+  h2 {
+    font-size: 2.5rem;
+    color: #6760ed;
+  }
+
+  p {
+    font-size: 1.4rem;
+    color: #9e9e9e;
+    text-align: center;
+  }
+
+  &__image {
+    width: 38rem;
+    height: 38rem;
+    margin-top: -2rem;
+  }
+}
