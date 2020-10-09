@@ -3,16 +3,15 @@ import "./header.styles.scss"
 import { Link } from "gatsby"
 import { slide as Menu } from "react-burger-menu"
 const Header = () => {
-  const [screenSize, setScreenSize] = useState({
-    windowWidth: window.innerWidth,
-  })
   const handleResize = e => {
     setScreenSize({ windowWidth: window.innerWidth })
   }
 
   useLayoutEffect(() => {
     window.addEventListener("rezise", handleResize)
-
+    const [screenSize, setScreenSize] = useState({
+      windowWidth: window.innerWidth,
+    })
     return () => {
       window.removeEventListener("resize", handleResize)
     }
