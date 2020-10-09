@@ -2,18 +2,24 @@ import React, { useState, useLayoutEffect } from "react"
 import "./header.styles.scss"
 import { Link } from "gatsby"
 import { slide as Menu } from "react-burger-menu"
+import debounce from "lodash.debounce"
 const Header = () => {
-  const handleResize = e => {
-    setScreenSize({ windowWidth: window.innerWidth })
+  let width
+  if (typeof window !== `undefined`) {
+    width = window.innerWidth
   }
+  const [screenSize, setScreenSize] = useState({
+    windowWidth: width,
+  })
 
   useLayoutEffect(() => {
-    window.addEventListener("rezise", handleResize)
-    const [screenSize, setScreenSize] = useState({
-      windowWidth: window.innerWidth,
-    })
+    const debounceHandleResize = debounce(() => {
+      setScreenSize({ windowWidth: window.innerWidth })
+    }, 1000)
+    window.addEventListener("rezise", debounceHandleResize)
+
     return () => {
-      window.removeEventListener("resize", handleResize)
+      window.removeEventListener("resize", debounceHandleResize)
     }
   })
 
