@@ -7,6 +7,8 @@ import "./styles/index.scss"
 
 const IndexPage = () => (
   <Layout>
+    <SEO title="Juan García Portfolio" />
+
     <HeaderSection />
   </Layout>
 )

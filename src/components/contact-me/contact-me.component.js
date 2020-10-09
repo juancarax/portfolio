@@ -5,11 +5,6 @@ import ContactMeIllustration from "../../assets/contactme.svg"
 import axios from "axios"
 
 const ContactMeForm = () => {
-  const [serverState, setServerState] = useState({
-    submitting: false,
-    status: null,
-  })
-
   const [formState, setFormState] = useState({
     email: "",
     name: "",
@@ -18,32 +13,14 @@ const ContactMeForm = () => {
   const handleChange = e =>
     setFormState({ ...formState, [e.target.name]: e.target.value })
   const { email, name, message } = formState
-  console.log(email)
-  console.log(name)
-  console.log(message)
-  const handleServerResponse = (ok, msg, form) => {
-    setServerState({
-      submitting: false,
-      status: { ok, msg },
-    })
-    if (ok) {
-      form.reset()
-    }
-  }
 
   const handleOnSubmit = e => {
     e.preventDefault()
-    const form = e.target
-    setServerState({ submitting: true })
-    axios
-      .post(
-        "https://getform.io/f/f89e5d4f-2bf4-41e1-9c8c-423b22a06ae6",
-        formState,
-        { headers: { Accept: "application" } }
-      )
-      .then(r => {
-        handleServerResponse(true, "Thanks!", form)
-      })
+    axios.post(
+      "https://getform.io/f/f89e5d4f-2bf4-41e1-9c8c-423b22a06ae6",
+      formState,
+      { headers: { Accept: "application" } }
+    )
   }
 
   return (

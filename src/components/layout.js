@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useLayoutEffect } from "react"
+import React, { useState, useLayoutEffect } from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 import "../pages/styles/index.scss"
 import Header from "./header/header.component.js"
 import SEO from "./seo"
@@ -17,7 +16,7 @@ const Layout = ({ children }) => {
     if (res[3] === "" || res[3] === "contactme" || res[4]) {
       setContactStyles("container__contact--primary-color")
     }
-  }, [])
+  }, [res])
   return (
     <div id="App">
       <Header />

@@ -12,7 +12,7 @@ const CustomButton = ({ children, to, styles, typeOf }) => {
           {children}
         </Link>
       ) : (
-        <a href={to} className={classStyles} target="_blank">
+        <a href={to} className={classStyles} target="_blank" rel="noreferrer">
           {children}
         </a>
       )}
